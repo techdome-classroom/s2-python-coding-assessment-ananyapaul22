@@ -24,10 +24,21 @@ Example 3:
 
 Input: s = "(]"
 Output: false
- 
 
 Constraints:
 
 1 <= s.length <= 104
 s consists of parentheses only '()[]{}'.
+
+def isValid(s: str)->bool:
+bracket_map={')':'(',']':'[','}':'{'}
+stack=[]
+for char in s:
+if char in bracket_map:
+top_element=stack.pop()if stack else'#'
+if bracket_map[char] != top_element:
+return False 
+else:
+stack.append(char)
+return not stack 
 
